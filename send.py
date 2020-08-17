@@ -27,11 +27,13 @@ class PlaneSendBase():
 
 class PlaneSendTemplate(PlaneSendBase):
 
-    def __init__(self, template, profile):
-        self.template = template
+    def __init__(self, schema, profile):
+        self.template = schema.id
+        self.delivery_day = schema.delivery_day
         super().__init__(profile)
 
     def send(self):
+        print("hello")
         return
 
 def PlaneSendReminder(PlaneSendBase):

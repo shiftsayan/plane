@@ -8,9 +8,12 @@ def plane():
     category = prompt_category()
     schema = prompt_schema(category)
 
-    if schema == 'template':
+    if category == 'template':
         PlaneSendTemplate(schema, profile).send()
-
+    elif category == 'reminder':
+        pass
+    elif category == 'longform':
+        pass
 
 if __name__ == "__main__":
     plane()

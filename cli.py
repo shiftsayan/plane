@@ -4,6 +4,7 @@ from schema import schema
 from profiles import profiles
 
 def prompt_category():
+    return 'template'
     questions = [
         {
             'type': 'list',
@@ -28,9 +29,14 @@ def prompt_schema(category):
         }
     ]
     answers = prompt(questions)
-    return answers['settings']
+
+    for ps in schema[category]:
+        if ps.id == answers['settings']:
+            return ps
+
 
 def prompt_profile():
+    return profiles[1] # TODO: remove hardcode testing
     questions = [
         {
             'type': 'list',
