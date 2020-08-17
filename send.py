@@ -2,12 +2,12 @@ import requests
 
 class PlaneSendBase():
 
-    def __init__(self, secrets):
-        self.domain = secrets.domain
-        self.api_key = secrets.api_key
-        self.sender = secrets.sender
-        self.recepients = secrets.recepients
-        self.reply_to = secrets.reply_to or secrets.sender
+    def __init__(self, profile):
+        self.domain = profile.domain
+        self.api_key = profile.api_key
+        self.sender = profile.sender
+        self.recepients = profile.recepients
+        self.reply_to = profile.reply_to or profile.sender
 
 
     def __send(self, subject, html, deliverytime):
@@ -27,9 +27,9 @@ class PlaneSendBase():
 
 class PlaneSendTemplate(PlaneSendBase):
 
-    def __init__(self, template, secrets):
+    def __init__(self, template, profile):
         self.template = template
-        super().__init__(secrets)
+        super().__init__(profile)
 
     def send(self):
         return

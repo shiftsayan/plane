@@ -15,7 +15,7 @@ def prompt_category():
     answers = prompt(questions)
     return answers['category']
 
-def prompt_settings(category):
+def prompt_schema(category):
     if len(schema[category]) == 1:
         return schema[category][0]
     
