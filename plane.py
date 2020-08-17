@@ -1,9 +1,10 @@
 #! /usr/bin/env python3
-from cli import prompt_category, prompt_settings
-from secrets import secrets
+from cli import prompt_category, prompt_settings, prompt_profile
 from send import PlaneSendTemplate, PlaneSendReminder
 
 def plane():
+    profile = prompt_profile()
+
     category = prompt_category()
     settings = prompt_settings(category)
 

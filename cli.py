@@ -1,6 +1,7 @@
 from PyInquirer import prompt
 
 from schema import schema
+from profiles import profiles
 
 def prompt_category():
     questions = [
@@ -23,8 +24,23 @@ def prompt_settings(category):
             'type': 'list',
             'name': 'settings',
             'message': 'What type of email do you want to send?',
-            'choices': [ ps.name for ps in schema[category] ],
+            'choices': [ ps.id for ps in schema[category] ],
         }
     ]
     answers = prompt(questions)
     return answers['settings']
+
+def prompt_profile():
+    questions = [
+        {
+            'type': 'list',
+            'name': 'profile',
+            'message': 'Which profile do you want to use?',
+            'choices': [ profile.id for profile in profiles ],
+        }
+    ]
+    answers = prompt(questions)
+    
+    for profile in profiles:
+        if profile.id == answers['profile']:
+            return profile

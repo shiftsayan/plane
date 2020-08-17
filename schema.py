@@ -3,7 +3,7 @@ from collections import namedtuple, OrderedDict
 from meetings import m_gbm, m_watercooler, m_hack
 from util import Day
 
-PlaneSettings = namedtuple('PlaneSettingsReminder', 'name delivery_day meeting_details')
+PlaneSettings = namedtuple('PlaneSettingsReminder', 'id delivery_day meeting_details')
 
 
 schema = OrderedDict([
