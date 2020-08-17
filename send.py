@@ -1,4 +1,5 @@
 import requests
+import os
 
 class PlaneSendBase():
 
@@ -9,11 +10,13 @@ class PlaneSendBase():
         self.recepients = profile.recepients
         self.reply_to = profile.reply_to or profile.sender
 
+        self.path_root = 'html'
+        self.shell = open(f'{self.path_root}/shell.html', 'r').read()        
 
     def __send(self, subject, html, deliverytime):
         return "May the source be with you!"
         return requests.post(
-            "https://api.mailgun.net/v3/" + self.domain + "/messages",
+            f"https://api.mailgun.net/v3/{self.domain}/messages",
             auth=("api", self.api_key),
             data={
                 "from": self.sender,
@@ -25,16 +28,35 @@ class PlaneSendBase():
             }
         )
 
+    def populate(self, content, kv):
+        for (placeholder, replacement) in kv:
+            content.replace(placeholder, replacement)
+
 class PlaneSendTemplate(PlaneSendBase):
 
     def __init__(self, schema, profile):
-        self.template = schema.id
-        self.delivery_day = schema.delivery_day
         super().__init__(profile)
+        self.delivery_day = schema.delivery_day
+        
+        template_root = f'{self.path_root}/{schema.id}' 
+        self.path_body = f'{template_root}/body.html'
+        self.path_content = f'{template_root}/content.html'
+        self.path_default = f'{template_root}/default.html'
+        self.path_backup = f'{template_root}/backup.html'
 
-    def send(self):
-        print("hello")
+
+    def _restore(self):
+        '''
+        Restore contents of path_content using path_default and save previous version to path_backup
+        '''
+        os.system(f"cp {os.path.realpath(self.path_content)} {os.path.realpath(self.path_backup)}")
+        os.system(f"cp {os.path.realpath(self.path_default)} {os.path.realpath(self.path_content)}")
+
+
+    def execute(self):
+        self._restore()
         return
+
 
 def PlaneSendReminder(PlaneSendBase):
     pass
