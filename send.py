@@ -38,11 +38,11 @@ class PlaneSendTemplate(PlaneSendBase):
         super().__init__(profile)
         self.delivery_day = schema.delivery_day
         
-        template_root = f'{self.path_root}/{schema.id}' 
-        self.path_body = f'{template_root}/body.html'
-        self.path_content = f'{template_root}/content.html'
-        self.path_default = f'{template_root}/default.html'
-        self.path_backup = f'{template_root}/backup.html'
+        self.id = f'{self.path_root}/{schema.id}' 
+        self.path_body = f'{self.id}/body.html'
+        self.path_content = f'{self.id}/content.html'
+        self.path_default = f'{self.id}/default.html'
+        self.path_backup = f'{self.id}/backup.html'
 
 
     def _restore(self):
@@ -55,6 +55,9 @@ class PlaneSendTemplate(PlaneSendBase):
 
     def execute(self):
         self._restore()
+        # Read content and close
+        # Generate data values using meetings.py
+        # Run populate
         return
 
 
