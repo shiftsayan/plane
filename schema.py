@@ -1,31 +1,34 @@
 from collections import namedtuple, OrderedDict
 
 from meetings import m_gbm, m_watercooler, m_hack
-from util import Day
+from util import Day, get_next_datetime
 
-PlaneSchema = namedtuple('PlaneSchema', 'id delivery_day meetings')
+DEFAULT_DELIVERY_TIME = 1 # AM
+
+
+PlaneSchema = namedtuple('PlaneSchema', 'id subject delivery_day meetings')
 
 
 schema = OrderedDict([
     ('template', [ 
-        PlaneSchema('weekly', Day.MONDAY, {
+        PlaneSchema('weekly', "ScottyLabs Meetings This Week", get_next_datetime(Day.MONDAY, DEFAULT_DELIVERY_TIME), {
             'gbm': m_gbm,
             'watercooler': m_watercooler,
             'hack': m_hack,
         }),
     ]),
     ('reminder', [
-        PlaneSchema('gbm', Day.THURSDAY, {
+        PlaneSchema('gbm', "ScottyLabs GBM Reminder", get_next_datetime(Day.THURSDAY, DEFAULT_DELIVERY_TIME), {
             'reminder': m_gbm,
         }),
-        PlaneSchema('watercooler', Day.FRIDAY, {
+        PlaneSchema('watercooler', "ScottyLabs Watercooler Session Reminder", get_next_datetime(Day.FRIDAY, DEFAULT_DELIVERY_TIME), {
             'reminder': m_watercooler,
         }),
-        PlaneSchema('hack', Day.SATURDAY, {
+        PlaneSchema('hack', "ScottyLabs Hack Session Reminder", get_next_datetime(Day.SATURDAY, DEFAULT_DELIVERY_TIME), {
             'reminder': m_hack,
         }),
     ]),
     ('longform', [
-        PlaneSchema('default', Day.TODAY, None),
+        PlaneSchema('default', None, Day.TODAY, None),
     ]),
 ])

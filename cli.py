@@ -4,7 +4,6 @@ from schema import schema
 from profiles import profiles
 
 def prompt_category():
-    return 'template'
     questions = [
         {
             'type': 'list',
@@ -24,7 +23,7 @@ def prompt_schema(category):
         {
             'type': 'list',
             'name': 'settings',
-            'message': 'What type of email do you want to send?',
+            'message': "What type of email do you want to send?",
             'choices': [ ps.id for ps in schema[category] ],
         }
     ]
@@ -41,7 +40,7 @@ def prompt_profile():
         {
             'type': 'list',
             'name': 'profile',
-            'message': 'Which profile do you want to use?',
+            'message': "Which profile do you want to use?",
             'choices': [ profile.id for profile in profiles ],
         }
     ]
@@ -50,3 +49,27 @@ def prompt_profile():
     for profile in profiles:
         if profile.id == answers['profile']:
             return profile
+
+
+def prompt_confirm(message="Do you want to confirm?"):
+    questions = [
+        {
+            'type': 'confirm',
+            'name': 'confirm',
+            'message': message,
+        }
+    ]
+    answers = prompt(questions)
+    return answers['confirm']
+
+
+def prompt_subject():
+    questions = [
+        {
+            'type': 'input',
+            'name': 'subject',
+            'message': "What is the subject of the email?",
+        }
+    ]
+    answers = prompt(questions)
+    return answers['subject']
