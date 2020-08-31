@@ -8,7 +8,7 @@ Meeting = namedtuple('Meeting', 'name date time zoom')
 m_gbm = Meeting(
     'General Body Meeting',
     get_next_datetime_formatted(Day.THURSDAY, DEFAULT_DELIVERY_TIME),
-    '6:30pm EDT/3:30pm PDT',
+    '6:00pm EDT/3:00pm PDT',
     'zoom',
 )
 

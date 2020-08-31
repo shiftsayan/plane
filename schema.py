@@ -10,8 +10,8 @@ schema = OrderedDict([
     ('template', [ 
         PlaneSchema('weekly', Day.MONDAY, {
             'gbm': m_gbm,
-            # 'watercooler': m_watercooler,
-            # 'hack': m_hack,
+            'watercooler': m_watercooler,
+            'hack': m_hack,
         }),
     ]),
     ('reminder', [

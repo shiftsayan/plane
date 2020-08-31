@@ -8,15 +8,15 @@ class Day(IntEnum):
     WEDNESDAY = 2
     THURSDAY = 3
     FRIDAY = 4
-    SUNDAY = 5
-    SATURDAY = 6
+    SATURDAY = 5
+    SUNDAY = 6
 
 
-def format_datetime(date):
+def format_datetime(dt):
     '''
     Returns date in the format `Friday, 1 March`
     '''
-    return date.strftime("%A, %-d %B")
+    return dt.strftime("%A, %-d %B")
 
 
 def get_next_datetime(day, hour=0):
