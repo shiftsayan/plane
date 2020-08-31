@@ -1,5 +1,5 @@
 from enum import IntEnum
-import datetime as dt
+import datetime
 
 class Day(IntEnum):
     TODAY = -1
@@ -12,21 +12,28 @@ class Day(IntEnum):
     SATURDAY = 6
 
 
+def format_datetime(date):
+    '''
+    Returns date in the format `Friday, 1 March`
+    '''
+    return date.strftime("%A, %-d %B")
+
+
 def get_next_datetime(day, hour=0):
     '''
     Takes in a day and an hour and returns the soonest possible datetime that is on the day and after the hour
     '''
-    date = dt.datetime.now()
+    dt = datetime.datetime.now()
 
     # If after hour on day, return current time (with a 1 minute buffer)
-    if date.weekday() == day and date.hour >= hour:
-        return dt.datetime.now() + dt.timedelta(minutes=1)
+    if dt.weekday() == day and dt.hour >= hour:
+        return datetime.datetime.now() + datetime.timedelta(minutes=1)
 
     # Otherwise, increment date to required day and hour
-    date += dt.timedelta(days=day-date.weekday())
-    return dt.datetime(date.year, date.month, date.day, hour, 0, 0, 0)
+    dt += datetime.timedelta(days=day-dt.weekday())
+    return datetime.datetime(dt.year, dt.month, dt.day, hour, 0, 0, 0)
 
 
 def get_next_datetime_formatted(day, hour=0):
-    date = get_next_datetime(day, hour)
-    return date.strftime("%A, %-d %B") # Friday, 1 March
+    next_dt = get_next_datetime(day, hour)
+    return format_datetime(next_dt)
