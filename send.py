@@ -37,13 +37,13 @@ class PlaneSendTemplate(PlaneSendBase):
     def __init__(self, schema, profile):
         super().__init__(profile)
         self.delivery_day = schema.delivery_day
+        self.meetings = schema.meetings or dict()
         
         self.id = f'{self.path_root}/{schema.id}' 
         self.path_body = f'{self.id}/body.html'
         self.path_content = f'{self.id}/content.html'
         self.path_default = f'{self.id}/default.html'
         self.path_backup = f'{self.id}/backup.html'
-
 
     def _restore(self):
         '''
@@ -52,10 +52,23 @@ class PlaneSendTemplate(PlaneSendBase):
         os.system(f"cp {os.path.realpath(self.path_content)} {os.path.realpath(self.path_backup)}")
         os.system(f"cp {os.path.realpath(self.path_default)} {os.path.realpath(self.path_content)}")
 
+    def _replace(self, content, meetings):
+        '''
+        Replace occurences of keys in kvs in content with values in kvs
+        '''
+        for prefix, meeting in meetings.items():
+            for suffix, value in zip(meeting._fields, meeting):
+                placeholder = f'{{{prefix}_{suffix}}}'
+                content = content.replace(placeholder, value)
+        return content
 
     def execute(self):
         self._restore()
-        # Read content and close
+        with open(self.path_content) as f:
+            template_content = f.read()
+            content = self._replace(template_content, self.meetings)
+            print(content)
+            
         # Generate data values using meetings.py
         # Run populate
         return

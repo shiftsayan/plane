@@ -1,24 +1,27 @@
 from collections import namedtuple
+from util import Day, get_next_datetime_formatted
 
-Meeting = namedtuple('Meeting', 'name day time zoom')
+DEFAULT_DELIVERY_TIME = 10 # AM
+
+Meeting = namedtuple('Meeting', 'name date time zoom')
 
 m_gbm = Meeting(
     'General Body Meeting',
-    'Thursday',
+    get_next_datetime_formatted(Day.THURSDAY, DEFAULT_DELIVERY_TIME),
     '6:30pm EDT/3:30pm PDT',
     'zoom',
 )
 
 m_watercooler = Meeting(
     'Watercooler Session',
-    'Friday',
+    get_next_datetime_formatted(Day.FRIDAY, DEFAULT_DELIVERY_TIME),
     '9:00pm EDT/6:00pm PDT',
     'zoom',
 )
 
 m_hack = Meeting(
     'Hack Session',
-    'Saturday',
+    get_next_datetime_formatted(Day.SATURDAY, DEFAULT_DELIVERY_TIME),
     '2:00pm EDT/11:00pm PDT',
     'zoom',
 )
