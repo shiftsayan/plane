@@ -3,7 +3,7 @@ from collections import namedtuple, OrderedDict
 from meetings import m_gbm, m_watercooler, m_hack
 from util import Day, get_next_datetime
 
-DEFAULT_DELIVERY_TIME = 1 # AM
+DEFAULT_DELIVERY_TIME = 10 # AM
 
 
 PlaneSchema = namedtuple('PlaneSchema', 'id subject delivery_day meetings')
