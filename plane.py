@@ -1,19 +1,11 @@
 #! /usr/bin/env python3
-from cli import prompt_category, prompt_schema, prompt_profile
-from send import PlaneSendTemplate, PlaneSendReminder
+from cli import prompt_schema, prompt_profile
+from send import PlaneSend
 
 def plane():
     profile = prompt_profile()
-
-    category = prompt_category()
-    schema = prompt_schema(category)
-
-    if category == 'template':
-        PlaneSendTemplate(schema, profile).execute()
-    elif category == 'reminder':
-        pass
-    elif category == 'longform':
-        pass
+    schema = prompt_schema()
+    PlaneSend(schema, profile).execute()
 
 if __name__ == "__main__":
     plane()

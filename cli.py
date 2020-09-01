@@ -3,39 +3,25 @@ from PyInquirer import prompt
 from schema import schema
 from profiles import profiles
 
-def prompt_category():
-    questions = [
-        {
-            'type': 'list',
-            'name': 'category',
-            'message': 'What category of email do you want to send?',
-            'choices': schema.keys()
-        }
-    ]
-    answers = prompt(questions)
-    return answers['category']
 
-def prompt_schema(category):
-    if len(schema[category]) == 1:
-        return schema[category][0]
-    
+def prompt_schema():
     questions = [
         {
             'type': 'list',
-            'name': 'settings',
+            'name': 'schema',
             'message': "What type of email do you want to send?",
-            'choices': [ ps.id for ps in schema[category] ],
+            'choices': [ ps.id for ps in schema ],
         }
     ]
     answers = prompt(questions)
 
-    for ps in schema[category]:
-        if ps.id == answers['settings']:
+    for ps in schema:
+        if ps.id == answers['schema']:
             return ps
 
 
 def prompt_profile():
-    return profiles[1] # TODO: remove hardcode testing
+    # return profiles[1] # TODO: remove hardcode testing
     questions = [
         {
             'type': 'list',

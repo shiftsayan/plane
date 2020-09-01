@@ -2,7 +2,7 @@ from enum import IntEnum
 import datetime
 
 class Day(IntEnum):
-    TODAY = -1
+    TODAY = datetime.datetime.now().weekday()
     MONDAY = 0
     TUESDAY = 1
     WEDNESDAY = 2
@@ -30,7 +30,7 @@ def get_next_datetime(day, hour=0):
         return datetime.datetime.now() + datetime.timedelta(minutes=1)
 
     # Otherwise, increment date to required day and hour
-    dt += datetime.timedelta(days=day-dt.weekday())
+    dt += datetime.timedelta(days=(day-dt.weekday()) % 7)
     return datetime.datetime(dt.year, dt.month, dt.day, hour, 0, 0, 0)
 
 

@@ -15,8 +15,8 @@ class PlaneSendBase():
         self.reply_to = profile.reply_to or profile.sender
 
         self.path_root = 'html'
-        self.path_render = f'{self.path_root}/plane_render.html'
-        self.shell = open(f'{self.path_root}/shell.html', 'r').read()        
+        self.path_render = f'{self.path_root}/plane-render.html'
+        self.shell = open(f'{self.path_root}/shell.html', 'r').read()  # TODO: rename shell
 
     def __send(self, subject, html, deliverytime):
         return requests.post(
@@ -66,7 +66,7 @@ class PlaneSendBase():
         timestamp = time.mktime(tuple)
         return utils.formatdate(timestamp)
 
-class PlaneSendTemplate(PlaneSendBase):
+class PlaneSend(PlaneSendBase):
 
     def __init__(self, schema, profile):
         super().__init__(profile)
@@ -125,6 +125,9 @@ class PlaneSendTemplate(PlaneSendBase):
         os.system(f"cp {os.path.realpath(self.path_default)} {os.path.realpath(self.path_content)}")
 
     def _populate(self):
+        '''
+        Populate content file with kv details and save changes
+        '''
         fh = open(self.path_content, 'r+')
         content = fh.read()
         populated_content = self.populate(content, self.kv)
@@ -132,5 +135,3 @@ class PlaneSendTemplate(PlaneSendBase):
         fh.write(populated_content)
         fh.close()
 
-def PlaneSendReminder(PlaneSendBase):
-    pass
