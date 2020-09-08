@@ -15,7 +15,7 @@ weekly = PlaneSchema(
     'weekly',
     'weekly',
     "ScottyLabs Meetings This Week",
-    f(Day.MONDAY), 
+    f(Day.TUESDAY), 
     {
         'gbm': m_gbm,
         'watercooler': m_watercooler,
@@ -31,4 +31,14 @@ longform = PlaneSchema(
     None,
 )
 
-schema = [ weekly, longform ]
+gbm_reminder = PlaneSchema(
+    'gbm-reminder',
+    'reminder',
+    "ScottyLabs GBM Reminder",
+    f(Day.TODAY),
+    {
+        'gbm': m_gbm,
+    }
+)
+
+schema = [ weekly, longform, gbm_reminder ]

@@ -74,7 +74,7 @@ class PlaneSend(PlaneSendBase):
         self.delivery_day = schema.delivery_day
         self.kv = self._get_meeting_kv(schema.meetings)
         
-        self.id = f'{self.path_root}/{schema.id}' 
+        self.id = f'{self.path_root}/{schema.template}' 
         self.path_body = f'{self.id}/body.html'
         self.path_content = f'{self.id}/content.html'
         self.path_default = f'{self.id}/default.html'
