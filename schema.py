@@ -38,7 +38,7 @@ gbm_reminder = PlaneSchema(
     "ScottyLabs GBM Reminder",
     f(Day.THURSDAY),
     {
-        'gbm': m_gbm,
+        'reminder': m_gbm,
     }
 )
 
