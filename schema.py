@@ -1,7 +1,7 @@
 from collections import namedtuple, OrderedDict
 from functools import partial
 
-from meetings import m_gbm, m_watercooler, m_hack
+from meetings import m_gbm, m_watercooler, m_hack, m_planning
 from util import Day, get_next_datetime
 
 
@@ -15,11 +15,12 @@ weekly = PlaneSchema(
     'weekly',
     'weekly',
     "ScottyLabs Meetings This Week",
-    f(Day.TUESDAY), 
+    f(Day.MONDAY), 
     {
         'gbm': m_gbm,
         'watercooler': m_watercooler,
         'hack': m_hack,
+        'planning': m_planning,
     },
 )
 
@@ -35,7 +36,7 @@ gbm_reminder = PlaneSchema(
     'gbm-reminder',
     'reminder',
     "ScottyLabs GBM Reminder",
-    f(Day.TODAY),
+    f(Day.THURSDAY),
     {
         'gbm': m_gbm,
     }
