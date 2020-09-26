@@ -42,4 +42,14 @@ gbm_reminder = PlaneSchema(
     }
 )
 
-schema = [ weekly, longform, gbm_reminder ]
+tech_reminder = PlaneSchema(
+    'tech-reminder',
+    'tech',
+    "ScottyLabs Tech Reminder",
+    f(Day.TODAY),
+    {
+        'hack': m_hack,
+    }
+)
+
+schema = [ weekly, longform, gbm_reminder, tech_reminder ]

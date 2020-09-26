@@ -16,7 +16,7 @@ def format_datetime(dt):
     '''
     Returns date in the format `Friday, 1 March`
     '''
-    return dt.strftime("%A, %-d %B")
+    return dt.strftime("%A, %d %B")
 
 
 def get_next_datetime(day, hour=0):

@@ -20,7 +20,7 @@ m_watercooler = Meeting(
 m_hack = Meeting(
     'Hack Session',
     get_next_datetime_formatted(Day.SATURDAY),
-    '2pm ET',
+    '1pm ET',
     'http://href.scottylabs.org/tech-zoom',
 )
 
