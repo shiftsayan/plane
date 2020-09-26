@@ -3,6 +3,7 @@ import os
 import webbrowser
 import time
 from email import utils
+import platform
 
 from cli import prompt_confirm, prompt_subject
 class PlaneSendBase():
@@ -54,7 +55,10 @@ class PlaneSendBase():
         preview.close()
 
     def preview(self):
-        webbrowser.open_new_tab("file://" + os.path.realpath(self.path_render))
+        if "microsoft" in platform.uname().release:
+            os.system("wslview " + self.path_render)
+        else:
+            webbrowser.open_new_tab("file://" + os.path.realpath(self.path_render))
         confirm = prompt_confirm("Does the preview look okay?")
         return confirm
 
