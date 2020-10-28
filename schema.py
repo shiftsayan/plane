@@ -1,7 +1,7 @@
 from collections import namedtuple, OrderedDict
 from functools import partial
 
-from meetings import m_gbm, m_watercooler, m_hack, m_planning
+from meetings import m_gbm, m_watercooler, m_tech, m_planning
 from util import Day, get_next_datetime
 
 
@@ -19,7 +19,7 @@ weekly = PlaneSchema(
     {
         'gbm': m_gbm,
         'watercooler': m_watercooler,
-        'hack': m_hack,
+        'tech': m_tech,
         'planning': m_planning,
     },
 )

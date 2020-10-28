@@ -12,21 +12,21 @@ m_gbm = Meeting(
 
 m_watercooler = Meeting(
     'Watercooler Session',
-    get_next_datetime_formatted(Day.FRIDAY),
+    get_next_datetime_formatted(Day.SUNDAY),
     '9pm ET',
-    'zoom',
+    'http://href.scottylabs.org/watercooler-zoom',
 )
 
-m_hack = Meeting(
-    'Hack Session',
+m_tech = Meeting(
+    'Tech Meeting',
     get_next_datetime_formatted(Day.SATURDAY),
-    '2pm ET',
+    '1pm ET',
     'http://href.scottylabs.org/tech-zoom',
 )
 
 m_planning = Meeting(
-    'Weekly Planning Meeting',
+    'Planning Meeting',
     get_next_datetime_formatted(Day.SATURDAY),
-    '12pm ET',
+    '11:30am ET',
     'http://href.scottylabs.org/planning-zoom',
 )
