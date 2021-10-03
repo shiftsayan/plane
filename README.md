@@ -18,9 +18,26 @@
 
 8. Install requirement files by running: "python3 -m pip install -r requirements.txt"
 
-9. Git clone the repository in the environment you have created. Move into the new branch you are editing on.
+9. Git clone the repository in the environment you have created (git clone https://github.com/ScottyLabs/plane.git). Move into the new branch you are editing on.
 
 10. cd into the "plane" folder and transfer the file secrets.py into the "plane" folder
 
 11. Run plane.py for testing
 
+### Onboarding Instructions for Testing on Mac
+
+1. Create a new folder to store the contents of the Plane Mail Management repository
+
+2. In command prompt, cd into the folder you have just created
+
+3. Create a virtual environment by running: "python3 -m venv {name}"
+
+4. Activate environment by running: "source {name}/bin/activate"
+
+5. Install requirement files by running: "python3 -m pip install -r requirements.txt"
+
+6. Git clone the repository in the environment you have created (git clone https://github.com/ScottyLabs/plane.git). Move into the new branch you are editing on.
+
+7. cd into the "plane" folder and transfer the file secrets.py into the "plane" folder
+
+8. Run plane.py for testing
