@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-=======
 # Plane Mail Management Initial Documentation
 
 ### Onboarding Instructions for Testing on Windows
@@ -26,4 +23,4 @@
 10. cd into the "plane" folder and transfer the file secrets.py into the "plane" folder
 
 11. Run plane.py for testing
->>>>>>> ff0d6b6470612b06886ad9369cf6566c99ac714c
+
