@@ -36,7 +36,7 @@
 
 5. Install requirement files by running: "python3 -m pip install -r requirements.txt"
 
-6. Git clone the repository in the environment you have created (git clone https://github.com/ScottyLabs/plane.git). Move into the new branch you are editing on.
+6. Git clone the repository in the environment you have created (git clone https://github.com/ScottyLabs/plane.git). Move into the new branch you are editing on
 
 7. cd into the "plane" folder and transfer the file secrets.py into the "plane" folder
 
