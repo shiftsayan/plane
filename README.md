@@ -22,7 +22,7 @@
 
 10. cd into the "plane" folder and transfer the file secrets.py into the "plane" folder. You can do this in Command Prompt with "mv ~/(PATH_TO_SECRETS.PY_HERE)/secrets.py ~/(PATH_TO_YOUR_PLANE_DIRECTORY_HERE)/secrets.py". 
 
-11. Run plane.py for testing (You can do this in the plane directory with all the .py files by doing "python3 plane.py" in your Terminal).
+11. Run plane.py for testing (You can do this in the plane directory with all the .py files by doing "python3 plane.py" in Command Prompt).
 
 12. You've finished the setup! Whenever you want to access your environment do step 4, then you can cd into your plane folder and run the python files from there.
 
