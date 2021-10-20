@@ -10,3 +10,40 @@
 7. To exit the program at any time, simply press "control + c"
     **NOTE**: be sure to exit out of editing before pressing "control + c"
 8. Be sure to deactivate the virtual environment at the end of your session by running "deactivate".
+
+
+# Creating a new email template (with Zoom links)
+1. In schema.py, create a new schema in following the form below:
+```
+    schema_name = PlaneSchema( 
+        'id', # this is what shows up in the options menu 
+        'template', 
+        'subject', # None if you want to manually input this every time
+        f(Day.DELIVERY_DAY), # either Day.DAYOFWEEK or Day.TODAY
+        { # set containing the names and meetings of your message
+            'new1': m_new1,
+            'new2': m_new2,
+        },
+    )
+```
+2. Add your schema to the list of schemas at the bottom of the schema.py file
+
+3. In meetings.py, create a new Meeting instance of the form:
+```
+    m_new = Meeting(
+        'name',
+        get_next_datetime_formatted(Day.DAY), #either Day.DAYOFWEEK or Day.TODAY
+        'time',
+        'Zoom link',
+    )
+```
+4. Import your new Meeting instance at the top of the schema.py file
+
+5. Create a new folder for your new email template name under HTML with the following files:
+    - body.html # HTML formatting for the email
+    - default.html # message body
+        - use ```{meeting_name}```, ```{meeting_date}```, ```{meeting_time}```, ```{meeting_zoom}``` respectively
+        - example: ```Come to our {new1_name} meeting on {new1_date} at {new1_time} over <a href="{reminder_zoom}">Zoom</a>!```
+    - **note:** the content.html and backup.html files will be created/updated every time you run the program
+
+6. Now run plane.py in your terminal (macOS) or your command prompt (Windows) and make sure that your new template is an option!
